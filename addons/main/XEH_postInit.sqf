@@ -165,9 +165,11 @@ ctrlDelete (uiNamespace getVariable [QGVAR(mainControl), controlNull]);
     params ["_veh"];
     private _player = [] call CBA_fnc_currentUnit;
     if !(_player in _veh) exitWith {};
+    #ifdef DEBUG_MODE_FULL
     if !(local _veh) then {
         systemChat format ["%1 [VPS DEBUG] UI update event received for %2 vehicle!", time, ["remote", "local"] select (local _veh)];
     };
+    #endif
     private _role = assignedVehicleRole _player;
     if (_role isNotEqualTo [] && {(toLowerANSI (_role select 0)) in ["driver", "turret"]}) then {
         [] call FUNC(initPlates);

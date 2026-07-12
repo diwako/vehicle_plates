@@ -10,7 +10,9 @@ if ((toLowerANSI typeOf _vehicle) in GVAR(vehBlacklist)) exitWith {
 };
 
 if (local _vehicle) then {
+    #ifdef DEBUG_MODE_FULL
     systemChat format ["%1 [VPS DEBUG] initializing vehicle: %2", time, getText (configOf _vehicle >> "displayName")];
+    #endif
     if (isNil {_vehicle getVariable QGVAR(numPlates)}) then {
         _vehicle setVariable [QGVAR(numPlates), [_vehicle] call FUNC(getMaxPlatesForType), true];
     } else {

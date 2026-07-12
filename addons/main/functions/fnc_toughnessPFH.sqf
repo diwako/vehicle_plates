@@ -60,7 +60,9 @@ if (!_sync) then {
 };
 
 if (_sync) then {
+    #ifdef DEBUG_MODE_FULL
     systemChat format ["%1 [VPS DEBUG] Toughness regen syncing plates!", time];
+    #endif
     _vehicle setVariable [QGVAR(lastToughPlateSync), time];
     [QGVAR(plateSync), [_vehicle, _plates], crew _vehicle] call CBA_fnc_targetEvent;
 } else {
