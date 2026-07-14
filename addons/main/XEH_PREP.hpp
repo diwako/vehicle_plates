@@ -13,3 +13,4 @@ PREP(initVehicle);
 PREP(modulePlate);
 PREP(toughnessPFH);
 PREP(updatePlateUi);
+PREP(isEraOrSlat);

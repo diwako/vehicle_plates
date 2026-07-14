@@ -4,6 +4,7 @@ if (is3DEN) exitWith {};
 if !(GVAR(enabled)) exitWith {};
 
 GVAR(trackedVehicles) = [];
+GVAR(eraOrSlatCache) = createHashMap;
 
 ["CBA_settingsInitialized", {
     {

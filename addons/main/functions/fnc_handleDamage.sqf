@@ -29,8 +29,9 @@ if !(_projectile in ["ace_ammoExplosion", "ACE_ammoExplosionLarge"]) then {
     {
         _plateValue = _plateValue + _x;
     } forEach (_vehicle getVariable [QGVAR(plates), []]);
-    if (_plateValue > 0) then {
-        if (_damage <= 0 || {"#light" in _hitPoint}) exitWith {};
+
+    if (_plateValue > 0 && {!("wheel" in _hitPoint)} && {!("track" in _hitPoint)} && {!([_vehicle, _hitPoint] call FUNC(isEraOrSlat))}) then {
+        if (_damage <= 0 || {"#" in _hitPoint}) exitWith {};
         private _hitHash = _vehicle getVariable QGVAR(hitHash);
         private _currentFrameArray = _hitHash getOrDefault [diag_frameNo, [], true];
         if (_currentFrameArray isEqualTo []) then {

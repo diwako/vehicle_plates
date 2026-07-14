@@ -2,13 +2,23 @@
 
 params ["_vehicle", "_hitPoint", "_hitIndex", "_selection", "_addedDamage", "_projectile", "_source", "_instigator"];
 
-private _hitpointArmor = (getNumber (configOf _vehicle >> "HitPoints" >> _hitPoint >> "armor"));
-private _invMass = 1 / getMass _vehicle;
-if (_hitpointArmor > 0) then {
-    _addedDamage = _addedDamage / (1 / _hitpointArmor);
+if (_hitIndex isEqualTo -1 && _selection isEqualTo "" && _hitPoint isEqualTo "") exitWith {
+    true
 };
 
-_addedDamage = ((sqrt(_addedDamage * 20.0) / _invMass) / 100000) * 3.1622;
+private _hitpointArmor = (getNumber (configOf _vehicle >> "HitPoints" >> _hitPoint >> "armor"));
+private _armor = if (_hitpointArmor >= 0) then {
+    _hitpointArmor * (getNumber (configOf _vehicle >> "armor"))
+} else {
+    abs _hitpointArmor;
+};
+if (_armor > 0) then {
+    _addedDamage = _addedDamage / (1 / _armor);
+};
+
+private _invMass = 1 / getMass _vehicle;
+// _addedDamage = ((sqrt(_addedDamage * 20.0) / _invMass) / 100000) * 3.1622;
+_addedDamage = ((sqrt(_addedDamage * 20.0) / _invMass) / 500000) * 3.1622;
 
 ([_vehicle, _addedDamage, _projectile] call FUNC(handleArmorDamage)) params ["_restDamage", "_receivedDamage"];
 
@@ -23,7 +33,7 @@ if (_hitpointArmor > 0) then {
 };
 
 private _ret = true;
- if ((_vehicle getVariable [QGVAR(aceVehicleDamageEH), -1]) isEqualTo -1) then {
+if ((_vehicle getVariable [QGVAR(aceVehicleDamageEH), -1]) isEqualTo -1) then {
     if (_selection != "") then {
         private _currentDamage = _vehicle getHitIndex _hitIndex;
         private _newDamage = _currentDamage + _restDamage;

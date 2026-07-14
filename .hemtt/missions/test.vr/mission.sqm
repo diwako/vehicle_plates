@@ -8,14 +8,14 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=34;
+		nextID=40;
 	};
 	class Camera
 	{
-		pos[]={6180.0938,13.803532,5214.3745};
-		dir[]={0.97876263,-0.19535968,-0.062165521};
-		up[]={0.19496748,0.98073226,-0.012383247};
-		aside[]={-0.06338685,-3.6816346e-09,-0.99799085};
+		pos[]={6186.9644,13.803532,5214.3428};
+		dir[]={0.9757067,-0.21889889,-0.0089400792};
+		up[]={0.21888973,0.97574759,-0.0020056146};
+		aside[]={-0.0091622872,0,-0.99995822};
 	};
 };
 binarizationWanted=0;
@@ -55,7 +55,8 @@ addons[]=
 	"A3_Soft_F_Gamma_Truck_01",
 	"ace_cargo",
 	"ace_rearm",
-	"diw_vehicle_plates_ace_rearm_compat"
+	"diw_vehicle_plates_ace_rearm_compat",
+	"A3_Armor_F_Gamma_APC_Wheeled_03"
 };
 class AddonsMetaData
 {
@@ -370,7 +371,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=17;
+		items=18;
 		class Item0
 		{
 			dataType="Object";
@@ -1264,6 +1265,174 @@ class Mission
 					};
 				};
 				nAttributes=4;
+			};
+		};
+		class Item17
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={6235.3359,7.6142888,5232.061};
+				angles[]={0,5.1467142,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				textures="Indep";
+			};
+			id=39;
+			type="I_APC_Wheeled_03_cannon_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="fillPlates";
+					expression="if (_value != 0) then {_this setVariable [""diw_vehicle_plates_main_fillPlates"", _value == 1]}";
+					class Value
+					{
+						class data
+						{
+							singleType="SCALAR";
+							value=1;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="VehicleCustomization";
+					expression="if (local _this) then {([_this] + _value + [true]) call (uinamespace getvariable 'BIS_fnc_initVehicle')};";
+					class Value
+					{
+						class data
+						{
+							singleType="ARRAY";
+							class value
+							{
+								items=2;
+								class Item0
+								{
+									class data
+									{
+										singleType="ARRAY";
+										class value
+										{
+											items=2;
+											class Item0
+											{
+												class data
+												{
+													singleType="STRING";
+													value="Indep";
+												};
+											};
+											class Item1
+											{
+												class data
+												{
+													singleType="SCALAR";
+													value=1;
+												};
+											};
+										};
+									};
+								};
+								class Item1
+								{
+									class data
+									{
+										singleType="ARRAY";
+										class value
+										{
+											items=10;
+											class Item0
+											{
+												class data
+												{
+													singleType="STRING";
+													value="showCamonetHull";
+												};
+											};
+											class Item1
+											{
+												class data
+												{
+													singleType="SCALAR";
+													value=1;
+												};
+											};
+											class Item2
+											{
+												class data
+												{
+													singleType="STRING";
+													value="showBags";
+												};
+											};
+											class Item3
+											{
+												class data
+												{
+													singleType="SCALAR";
+													value=1;
+												};
+											};
+											class Item4
+											{
+												class data
+												{
+													singleType="STRING";
+													value="showBags2";
+												};
+											};
+											class Item5
+											{
+												class data
+												{
+													singleType="SCALAR";
+													value=1;
+												};
+											};
+											class Item6
+											{
+												class data
+												{
+													singleType="STRING";
+													value="showTools";
+												};
+											};
+											class Item7
+											{
+												class data
+												{
+													singleType="SCALAR";
+													value=1;
+												};
+											};
+											class Item8
+											{
+												class data
+												{
+													singleType="STRING";
+													value="showSLATHull";
+												};
+											};
+											class Item9
+											{
+												class data
+												{
+													singleType="SCALAR";
+													value=1;
+												};
+											};
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+				nAttributes=2;
 			};
 		};
 	};
