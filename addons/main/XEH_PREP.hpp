@@ -1,0 +1,16 @@
+PREP(addPlate);
+PREP(addPlateActionCancel);
+PREP(addPlateActionStart);
+PREP(addPlateActionSuccess);
+PREP(canAddPlate);
+PREP(getMaxPlatesForType);
+PREP(handleArmorDamage);
+PREP(handleDamage);
+PREP(handlePlateHit);
+PREP(holdActionAdd);
+PREP(initPlates);
+PREP(initVehicle);
+PREP(modulePlate);
+PREP(toughnessPFH);
+PREP(updatePlateUi);
+PREP(isEraOrSlat);

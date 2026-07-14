@@ -1,0 +1,57 @@
+name = "diw_vehicle_plates"
+prefix = "diw_vehicle_plates"
+author = "diwako"
+template = "cba"
+mainprefix = "z"
+
+[version]
+path = "addons/main/script_version.hpp"
+git_hash = 0
+
+[files]
+include = [
+    "mod.cpp",
+    "*.paa",
+    "LICENSE",
+    "readme.txt",
+    "authors.txt",
+    "readme.md",
+    "*.p3d",
+    "*.rvmat",
+]
+exclude = ["*.psd", "*.png", "*.tga"]
+
+[hemtt.signing]
+key_name = "{{prefix}}_{{version}}"
+authority = "{{prefix}}_{{version}}-{{git \"id 8\"}}"
+
+[signing]
+private_key_hash = "daa9714e4e603a3b70699035633f237c3fdfbd1c"
+# If Brett sees this, this is only temporary until stuff is tested and fixed!
+
+[hemtt.release]
+folder = "diw_vehicle_plates"
+
+
+[hemtt.launch.default]
+workshop = [
+    "450814997",  # CBA_A3's Workshop ID
+    "1779063631", # Zeus Enhanced's Workshop ID
+    "463939057",  # ace Workshop ID
+    "3499977893", # Advanced developer tools
+]
+
+parameters = ["-world=empty"]
+mission = "test.vr"
+
+[hemtt.launch.acre]
+extends = "default"
+workshop = [
+    "751965892", # ACRE2
+]
+
+[lints.stringtables.sorted]
+options.only-lang = true
+
+[lints.config.math_could_be_unquoted]
+enabled = "pedantic"
